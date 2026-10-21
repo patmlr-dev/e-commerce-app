@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 function Auth() {
   const [mode, setMode] = useState("signup");
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const { signUp, login } = useAuth()
+  const { signUp, login } = useAuth();
 
   const {
     register,
@@ -18,20 +18,20 @@ function Auth() {
   } = useForm();
 
   const onSubmit = (data) => {
-    setError(null)
-    let result
-    if ( mode === "signup" ) {
-      result = signUp(data.email, data.password)
+    setError(null);
+    let result;
+    if (mode === "signup") {
+      result = signUp(data.email, data.password);
     } else {
-      result = login(data.email, data.password)
+      result = login(data.email, data.password);
     }
 
-   if (result.success) {
-    navigate("/")
-   } else {
-    setError(result.error)
-   }
-  }
+    if (result.success) {
+      navigate("/");
+    } else {
+      setError(result.error);
+    }
+  };
 
   return (
     <div>
@@ -63,8 +63,8 @@ function Auth() {
             },
             maxLength: {
               value: 12,
-              message: "Password must be less than 12 characters"
-            }
+              message: "Password must be less than 12 characters",
+            },
           })}
         />
         {errors.password && <span>{errors.password.message}</span>}

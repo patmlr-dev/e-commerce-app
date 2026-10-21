@@ -1,26 +1,34 @@
-import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { getProductById } from "../data/products"
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getProductById } from "../data/products";
+import { useCart } from "../context/CartContext";
 
 function ProductDetail() {
-  const { id } = useParams()
-  const [product, setProduct] = useState(null)
-  const navigate = useNavigate()
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
+  const { addToCart, cartItems } = useCart();
 
-  useEffect( () => {
-    const foundProduct = getProductById(id)
+  useEffect(() => {
+    const foundProduct = getProductById(id);
 
     if (!foundProduct) {
-      navigate("/")
-      return 
+      navigate("/");
+      return;
     }
 
-    setProduct(foundProduct)
-  }, [id]) 
+    setProduct(foundProduct);
+  }, [id]);
 
   if (!product) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
+
+  const productInCart = cartItems.find((item) => item.id === product.id);
+
+  const productQuantityLabel = productInCart
+    ? `(${productInCart.quantity})`
+    : "";
 
   return (
     <div>
@@ -32,11 +40,13 @@ function ProductDetail() {
           <h1>{product.name}</h1>
           <p>{product.price}</p>
           <p>{product.description}</p>
-          <button>Add to Cart</button>
+          <button onClick={() => addToCart(product.id)}>
+            Add to Cart {productQuantityLabel}
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProductDetail
+export default ProductDetail;
