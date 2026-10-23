@@ -1,19 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
   const { user, logout } = useAuth();
   return (
-    <nav>
-      <Link to="/">E-Comm-App</Link>
+    <nav className="nav-container">
+      <Link to="/" className="nav-logo">
+        Shop<span>Now</span>
+      </Link>
       <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/checkout">Cart</Link>
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+        <NavLink to="/checkout">Cart</NavLink>
       </div>
       {!user ? (
         <div className="nav-links-auth">
-          <Link to="/auth">Login</Link>
-          <Link to="/auth">Signup</Link>
+          <NavLink to="/auth">Login</NavLink>
+          <NavLink to="/auth">Signup</NavLink>
         </div>
       ) : (
         <div>

@@ -1,0 +1,52 @@
+/* Navbar */
+
+.nav-container {
+  background-color: #1f1f1f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 0.75em;
+  box-shadow: 0 2px 15px gray;
+}
+
+.nav-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-logo {
+  font-weight: 800;
+  font-size: 1.25rem;
+  font-style: italic;
+  transition: 0.2s ease;
+}
+
+.nav-logo > span {
+  color: blue;
+  transition: 0.2s ease;
+}
+
+.nav-logo:hover,
+.nav-links > a:hover,
+.nav-links-auth > a:hover {
+  color: blue;
+}
+
+.nav-logo:hover > span {
+  color: white;
+}
+
+.nav-links > a,
+.nav-links-auth > a {
+  margin-left: 1em;
+  transition: 0.2s ease;
+}
+
+.nav-links > a {
+  padding: 0.5em 0.75em;
+  border-radius: 0.5em;
+}
+
+.nav-links > a.active {
+  background-color: #303030;
+}
