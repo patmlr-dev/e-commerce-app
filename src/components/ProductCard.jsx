@@ -20,8 +20,13 @@ function ProductCard({ product }) {
         <h3 className="product-card-name">{product.name}</h3>
         <p className="product-card-price">${product.price}</p>
         <div className="product-card-actions">
-          <Link to={`/products/${product.id}`}>View Details</Link>
-          <button onClick={() => addToCart(product.id)}>
+          <Link to={`/products/${product.id}`} className="btn btn-gray">
+            View Details
+          </Link>
+          <button
+            onClick={() => addToCart(product.id)}
+            className="btn btn-blue"
+          >
             Add to Cart {productQuantityLabel}
           </button>
         </div>

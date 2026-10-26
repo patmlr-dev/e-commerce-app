@@ -1,17 +1,20 @@
-import React from "react";
 import { getProducts } from "../data/products";
 import ProductCard from "../components/ProductCard";
 
 function Home() {
   const products = getProducts();
-  console.log(products);
+
   return (
-    <div>
+    <div className="home-container">
       <div className="home-hero">
-        <h1>Welcome to E-Comm App</h1>
-        <p>Discover amazing products at great prices</p>
+        <h1 className="home-title">
+          Welcome to <em>ShopNow</em>!
+        </h1>
+        <p className="home-subtitle">
+          Discover amazing products at great prices
+        </p>
       </div>
-      <div className="container">
+      <div className="home-content">
         <h2>Our Products</h2>
         <div className="products-grid">
           {products.map((product) => (
