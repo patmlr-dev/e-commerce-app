@@ -9,15 +9,28 @@ function Navbar() {
         Shop<span>Now</span>
       </Link>
       <div className="nav-links">
-        <NavLink to="/" end>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "nav-link selected" : "nav-link"
+          }
+          end
+        >
           Home
         </NavLink>
-        <NavLink to="/checkout">Cart</NavLink>
+        <NavLink
+          to="/checkout"
+          className={({ isActive }) =>
+            isActive ? "nav-link selected" : "nav-link"
+          }
+        >
+          Cart
+        </NavLink>
       </div>
       {!user ? (
         <div className="nav-links-auth">
-          <NavLink to="/auth">Login</NavLink>
-          <NavLink to="/auth">Signup</NavLink>
+          <NavLink to="/auth?auth=login">Login</NavLink>
+          <NavLink to="/auth?auth=signup">Signup</NavLink>
         </div>
       ) : (
         <div>

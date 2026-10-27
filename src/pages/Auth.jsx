@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function Auth() {
-  const [mode, setMode] = useState("signup");
+  const [mode, setMode] = useState("");
   const [error, setError] = useState(null);
+  const [modeLink, setModeLink] = useSearchParams();
+
+  useEffect(() => {
+    setMode(modeLink.get("auth"));
+  }, [modeLink]);
 
   const navigate = useNavigate();
 
@@ -75,12 +80,12 @@ function Auth() {
       {mode === "signup" ? (
         <p>
           Already have an account?{" "}
-          <span onClick={() => setMode("login")}>Login</span>
+          <span onClick={() => setModeLink({ auth: "login" })}>Login</span>
         </p>
       ) : (
         <p>
           Don't have an account?{" "}
-          <span onClick={() => setMode("signup")}>Sign Up</span>
+          <span onClick={() => setModeLink({ auth: "signup" })}>Sign Up</span>
         </p>
       )}
     </div>

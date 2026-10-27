@@ -31,16 +31,21 @@ function ProductDetail() {
     : "";
 
   return (
-    <div>
+    <div className="product-detail-container">
       <div className="product-detail">
-        <div className="product-detail-image">
-          <img src={product.image} alt={product.name} />
-        </div>
+        <img
+          className="product-detail-img"
+          src={product.image}
+          alt={product.name}
+        />
         <div className="product-detail-content">
-          <h1>{product.name}</h1>
-          <p>{product.price}</p>
-          <p>{product.description}</p>
-          <button onClick={() => addToCart(product.id)}>
+          <h1 className="product-detail-name">{product.name}</h1>
+          <p className="product-detail-price">${product.price}</p>
+          <p className="product-detail-desc">{product.description}</p>
+          <button
+            className="btn btn-large btn-blue"
+            onClick={() => addToCart(product.id)}
+          >
             Add to Cart {productQuantityLabel}
           </button>
         </div>
