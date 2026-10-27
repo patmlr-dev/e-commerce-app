@@ -18,48 +18,67 @@ function Checkout() {
   }
 
   return (
-    <>
-      <h1>Checkout</h1>
-      <div className="checkout-container">
-        <div className="checkout-items">
-          <h2>Order Summary</h2>
-          {cartItems.map((item) => (
-            <div key={item.id}>
-              <img src={item.product.image} alt={item.product.name} />
-              <div className="checkout-item-details">
-                <h3>{item.product.name}</h3>
-                <p>${item.product.price} each</p>
-                <div className="quantity-controls">
-                  <button
-                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                  >
-                    -
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                  >
-                    +
-                  </button>
-                  <p className="checkout-items-total">
-                    ${(item.product.price * item.quantity).toFixed(2)}
-                  </p>
-                  <button onClick={() => removeFromCart(item.id)}>
-                    Remove
-                  </button>
+    <div className="checkout-container">
+      <h1 className="checkout-header">Checkout</h1>
+      <div className="checkout-content">
+        <section className="checkout-order-details">
+          <h2 className="checkout-section-header">Order Summary</h2>
+          <div className="checkout-items">
+            {cartItems.map((item) => (
+              <div key={item.id} className="checkout-item-container">
+                <img
+                  className="checkout-item-img"
+                  src={item.product.image}
+                  alt={item.product.name}
+                />
+                <div className="checkout-item-content">
+                  <div className="checkout-item-details">
+                    <h3>{item.product.name}</h3>
+                    <p>${item.product.price} each</p>
+                  </div>
+                  <div className="quantity-controls">
+                    <button
+                      className="checkout-qty-btn"
+                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      className="checkout-qty-btn"
+                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    >
+                      +
+                    </button>
+                    <p className="checkout-item-total">
+                      ${(item.product.price * item.quantity).toFixed(2)}
+                    </p>
+                    <button
+                      className="btn btn-red"
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-
-          <div className="checkout-summary">
-            <h2>Total</h2>
-            <p>${total.toFixed(2)}</p>
-            <button onClick={() => placeOrder()}>Place Order</button>
+            ))}
           </div>
-        </div>
+        </section>
+        <section className="checkout-summary">
+          <h2 className="checkout-section-header">Total</h2>
+          <p className="checkout-total">
+            Subtotal: <span>${total.toFixed(2)}</span>
+          </p>
+          <button
+            className="btn btn-blue btn-large btn-max-width"
+            onClick={() => placeOrder()}
+          >
+            Place Order
+          </button>
+        </section>
       </div>
-    </>
+    </div>
   );
 }
 
