@@ -312,3 +312,69 @@
   color: black;
   font-weight: 600;
 }
+
+/* Auth */
+.auth-page {
+  display: flex;
+  margin: 2em;
+  justify-content: center;
+}
+
+.auth-container {
+  box-shadow: 0 0 10px 1px rgb(178, 178, 178);
+  border-radius: 1em;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-header {
+  font-size: 1.5rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.form-input-container {
+  margin-bottom: 0.5em;
+}
+
+.form-label {
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: rgb(62, 62, 62);
+  display: block;
+}
+
+.form-input {
+  border: 1px solid gray;
+  padding: 0.25em 0.5em;
+  border-radius: 0.175em;
+  width: 100%;
+  display: block;
+}
+
+.form-error {
+  font-size: 0.875rem;
+  color: red;
+  font-weight: 500;
+  margin-bottom: 0.5em;
+}
+
+.auth-change {
+  font-size: 0.875rem;
+}
+
+.auth-change > span {
+  text-decoration: underline;
+}
+
+.auth-change > span:hover {
+  color: blue;
+  cursor: pointer;
+}
